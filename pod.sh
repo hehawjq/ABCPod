@@ -10,6 +10,24 @@ PodSpecPath=$RootPath/$PodSpecName
 #repo的私有库的名字
 Repo_Name=ABCPod
 
+changeSpecVersion(){
+    while read line
+    do
+    zhengze="^s.version"
+    if [[ "$line" =~ $zhengze ]];then
+    echo "File:${line}"
+    sed -i "" "s/${line}/s.version      =\"$Tag_Version\"/g" $PodSpecPath
+    fi
+    done < $PodSpecPath
+    cat  $PodSpecPath
+
+    #修改XESTestSDKFramework/XESTestSDK.framework/Info.plist的
+    plistPath=$RootPath/Frameworks/ArcSoftFaceSDK.framework/Info.plist
+    BUILD_CODE=`date +%m%d%H%M`
+    /usr/libexec/PlistBuddy -c "Set CFBundleShortVersionString $Tag_Version" $plistPath
+    /usr/libexec/PlistBuddy -c "Set CFBundleVersion $BUILD_CODE" $plistPath
+}
+
 #获取所有tag
 echo "\n当前SDK所有的tag是："
 git fetch --tags
@@ -65,23 +83,7 @@ while read line
         changeSpecVersion
     fi
 
-changeSpecVersion(){
-    while read line
-    do
-        zhengze="^s.version"
-        if [[ "$line" =~ $zhengze ]];then
-            echo "File:${line}"
-            sed -i "" "s/${line}/s.version      =\"$Tag_Version\"/g" $PodSpecPath
-        fi
-    done < $PodSpecPath
-    cat  $PodSpecPath
 
-    #修改XESTestSDKFramework/XESTestSDK.framework/Info.plist的
-    plistPath=$RootPath/Frameworks/ArcSoftFaceSDK.framework/Info.plist
-        BUILD_CODE=`date +%m%d%H%M`
-        /usr/libexec/PlistBuddy -c "Set CFBundleShortVersionString $Tag_Version" $plistPath
-        /usr/libexec/PlistBuddy -c "Set CFBundleVersion $BUILD_CODE" $plistPath
-}
 
 pushGit(){
     #git 暂存
@@ -102,7 +104,6 @@ pushGit(){
 
 #调用pushGit 方法
 pushGit
-
 
 pushPodRepo(){
     #pod 提交
