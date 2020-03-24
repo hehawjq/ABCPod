@@ -13,10 +13,10 @@ Repo_Name=ABCPod
 changeSpecVersion(){
     while read line
     do
-    zhengze="^s.version"
+    zhengze="^spec.version"
     if [[ "$line" =~ $zhengze ]];then
     echo "File:${line}"
-    sed -i "" "s/${line}/s.version      =\"$Tag_Version\"/g" $PodSpecPath
+    sed -i "" "s/${line}/spec.version      =\"$Tag_Version\"/g" $PodSpecPath
     fi
     done < $PodSpecPath
     cat  $PodSpecPath
