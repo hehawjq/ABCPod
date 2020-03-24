@@ -108,7 +108,7 @@ pushGit
 pushPodRepo(){
     #pod 提交
     # 修改spec文件并push上去
-    pod repo add
+    pod repo add .
     pod repo push $Repo_Name $PodSpecName --verbose --use-libraries --allow-warnings
     echo "\n\n新的版本号为 $Tag_Version "
 }
