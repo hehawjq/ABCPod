@@ -96,7 +96,7 @@ pushGit(){
 
 
     git add .
-    git commit -m "archive framework in $Date"
+    git commit -m "Support framework"
     git push
     git tag $Tag_Version
     git push --tags
