@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "ABCPod"
-  spec.version      ="1.1.1"
+  spec.version      ="1.1.2"
   spec.summary      = "an pod test ABCPodD."
 
   # This description is used to generate tags and improve search results.
@@ -60,7 +60,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.platform     = :ios
-  spec.platform     = :ios, "8.0"
+  spec.platform     = :ios, "9.0"
 
   #  When using multiple platforms
   # spec.ios.deployment_target = "5.0"
@@ -88,6 +88,13 @@ Pod::Spec.new do |spec|
   #  Not including the public_header_files will make all headers public.
   #
 
+
+  spec.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+  spec.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+  
+  spec.vendored_frameworks = 'ABCPod/Frameworks/*.framework'
+  spec.source_files  = 'ABCPod/Frameworks/*.framework/Headers/*.h'
+  
   #spec.source_files  = "ABCPod", "*.{h,m}"
   #spec.exclude_files = "Classes/Exclude"
 
@@ -101,7 +108,7 @@ Pod::Spec.new do |spec|
   #  You can preserve files from being cleaned, please don't preserve
   #  non-essential files like tests, examples and documentation.
   #
-
+  
   # spec.resource  = "icon.png"
   # spec.resources = "Resources/*.png"
 
@@ -114,7 +121,7 @@ Pod::Spec.new do |spec|
   #  the lib prefix of their name.
   #
 
-  spec.framework  = "Frameworks/ArcSoftFaceSDK.framework"
+  #spec.framework  = "SomeFramework"
   # spec.frameworks = "SomeFramework", "AnotherFramework"
 
   # spec.library   = "iconv"

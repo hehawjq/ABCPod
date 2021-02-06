@@ -1,0 +1,6 @@
+framework module WJQAutoRetryAFNetworking {
+  umbrella header "WJQAutoRetryAFNetworking.h"
+
+  export *
+  module * { export * }
+}

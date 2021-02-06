@@ -1,6 +1,0 @@
-framework module ArcSoftFaceSDK {
-  umbrella header "ArcSoftFaceSDK.h"
-
-  export *
-  module * { export * }
-}
