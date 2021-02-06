@@ -25,8 +25,8 @@ changeSpecVersion(){
     #修改XESTestSDKFramework/XESTestSDK.framework/Info.plist的
     plistPath=$RootPath/Frameworks/WJQAutoRetryAFNetworking.framework/Info.plist
     BUILD_CODE=`date +%m%d%H%M`
-    /usr/libexec/PlistBuddy -c "Set CFBundleShortVersionString $Tag_Version" $plistPath
-    /usr/libexec/PlistBuddy -c "Set CFBundleVersion $BUILD_CODE" $plistPath
+    /usr/libexec/PlistBuddy -c "Set BundleShortVersionString $Tag_Version" $plistPath
+    /usr/libexec/PlistBuddy -c "Set BundleVersion $BUILD_CODE" $plistPath
 }
 
 #获取所有tag
