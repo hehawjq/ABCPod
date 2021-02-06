@@ -22,7 +22,7 @@ changeSpecVersion(){
     cat  $PodSpecPath
 
     #修改XESTestSDKFramework/XESTestSDK.framework/Info.plist的
-    plistPath=$RootPath/Frameworks/ArcSoftFaceSDK.framework/Info.plist
+    plistPath=$RootPath/Frameworks/WJQAutoRetryAFNetworking.framework/Info.plist
     BUILD_CODE=`date +%m%d%H%M`
     /usr/libexec/PlistBuddy -c "Set CFBundleShortVersionString $Tag_Version" $plistPath
     /usr/libexec/PlistBuddy -c "Set CFBundleVersion $BUILD_CODE" $plistPath
@@ -103,6 +103,7 @@ pushGit(){
 }
 
 #调用pushGit 方法
+#
 pushGit
 
 pushPodRepo(){
