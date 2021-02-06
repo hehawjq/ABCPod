@@ -23,7 +23,7 @@ changeSpecVersion(){
     cat  $PodSpecPath
 
     #修改XESTestSDKFramework/XESTestSDK.framework/Info.plist的
-    plistPath=$RootPath/Frameworks/WJQAutoRetryAFNetworking.framework/Info.plist
+    plistPath=$RootPath/ABCPod/Frameworks/WJQAutoRetryAFNetworking.framework/Info.plist
     echo $plistPath
     BUILD_CODE=`date +%m%d%H%M`
     /usr/libexec/PlistBuddy -c "Set CFBundleShortVersionString $Tag_Version" $plistPath
