@@ -111,6 +111,8 @@ pushPodRepo(){
     #pod 提交
     # 修改spec文件并push上去
 #    pod repo add $Repo_Name https://github.com/hehawjq/ABCPod
+    echo $Repo_Name
+    echo $PodSpecName
     pod trunk push $Repo_Name $PodSpecName --verbose --use-libraries --allow-warnings
     echo "\n\n新的版本号为 $Tag_Version "
 }
