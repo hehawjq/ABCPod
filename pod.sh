@@ -16,8 +16,8 @@ changeSpecVersion(){
     zhengze="^spec.version"
     if [[ "$line" =~ $zhengze ]];then
     echo "File:${line}"
-    #保存对应版本号的podspec文件
-    #sed -i "" "s/${line}/spec.version      =\"$Tag_Version\"/g" $PodSpecPath
+    #修改对应版本号的podspec文件
+    sed -i "" "s/${line}/spec.version      =\"$Tag_Version\"/g" $PodSpecPath
     fi
     done < $PodSpecPath
     cat  $PodSpecPath
@@ -111,8 +111,6 @@ pushPodRepo(){
     #pod 提交
     # 修改spec文件并push上去
 #    pod repo add $Repo_Name https://github.com/hehawjq/ABCPod
-    echo $Repo_Name
-    echo $PodSpecName
     pod trunk push --verbose --use-libraries --allow-warnings
     echo "\n\n新的版本号为 $Tag_Version "
 }
