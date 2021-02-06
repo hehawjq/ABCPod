@@ -16,7 +16,8 @@ changeSpecVersion(){
     zhengze="^spec.version"
     if [[ "$line" =~ $zhengze ]];then
     echo "File:${line}"
-    sed -i "" "s/${line}/spec.version      =\"$Tag_Version\"/g" $PodSpecPath
+    #保存对应版本号的podspec文件
+    #sed -i "" "s/${line}/spec.version      =\"$Tag_Version\"/g" $PodSpecPath
     fi
     done < $PodSpecPath
     cat  $PodSpecPath
