@@ -24,9 +24,10 @@ changeSpecVersion(){
 
     #修改XESTestSDKFramework/XESTestSDK.framework/Info.plist的
     plistPath=$RootPath/Frameworks/WJQAutoRetryAFNetworking.framework/Info.plist
+    echo $plistPath
     BUILD_CODE=`date +%m%d%H%M`
-    /usr/libexec/PlistBuddy -c "Set BundleShortVersionString $Tag_Version" $plistPath
-    /usr/libexec/PlistBuddy -c "Set BundleVersion $BUILD_CODE" $plistPath
+    /usr/libexec/PlistBuddy -c "Set CFBundleShortVersionString $Tag_Version" $plistPath
+    /usr/libexec/PlistBuddy -c "Set CFBundleVersion $BUILD_CODE" $plistPath
 }
 
 #获取所有tag
@@ -111,7 +112,7 @@ pushPodRepo(){
     #pod 提交
     # 修改spec文件并push上去
 #    pod repo add $Repo_Name https://github.com/hehawjq/ABCPod
-    pod trunk push --verbose --use-libraries --allow-warnings
+    pod trunk push --allow-warnings
     echo "\n\n新的版本号为 $Tag_Version "
 }
 
